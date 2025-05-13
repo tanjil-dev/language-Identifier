@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% block title %}Pehchano{% endblock %}
+
+{% block content %}
+<div class="container-flex" id="keyboard-1">
+    <div class="row d-flex justify-content-center text-center">
+        <div class="col-md-6">
+            <div id="task-container" class="card shadow p-4">
+                <!-- Center text with Bootstrap -->
+                <div class="container">
+                    <h1 class="text-center">Pehchano</h1>
+                    <p class="text-center">Type in text to identify language</p>
+                </div>
+                <!-- Form starts here -->
+                <form method="POST" id="predictionForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <textarea name="text" class="form-control use-keyboard-input" id="textField"
+                                  placeholder="Enter text here"
+                                  rows="4" cols="100" required></textarea>
+                    </div>
+                    <button type="submit" id="searchBtn" class="btn btn-success w-100 mb-3">Identify</button>
+                    <a id="showKeyboardBtn" class="icon-btn btn btn-success w-100 mb-3">Keyboard</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="keyboard-pos"></div>
+<div class="keyboard hidden" id="keyboard">
+    <div class="keyboard-header">
+        <span id="closeKeyboardBtn">X</span>
+    </div>
+    <div class="keyboard-body">
+        <div class="keyboard-row">
+            <button class="key" data-value="۱">۱</button>
+            <button class="key" data-value="۲">۲</button>
+            <button class="key" data-value="۳">۳</button>
+            <button class="key" data-value="۴">۴</button>
+            <button class="key" data-value="۵">۵</button>
+            <button class="key" data-value="۶">۶</button>
+            <button class="key" data-value="۷">۷</button>
+            <button class="key" data-value="۸">۸</button>
+            <button class="key" data-value="۹">۹</button>
+            <button class="key" data-value="۰">۰</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key" data-value="ق">ق</button>
+            <button class="key" data-value="و">و</button>
+            <button class="key" data-value="ع">ع</button>
+            <button class="key" data-value="ر">ر</button>
+            <button class="key" data-value="ت">ت</button>
+            <button class="key" data-value="ے">ے</button>
+            <button class="key" data-value="ء">ء</button>
+            <button class="key" data-value="ی">ی</button>
+            <button class="key" data-value="ہ">ہ</button>
+            <button class="key" data-value="پ">پ</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key" data-value="ا">ا</button>
+            <button class="key" data-value="س">س</button>
+            <button class="key" data-value="د">د</button>
+            <button class="key" data-value="ف">ف</button>
+            <button class="key" data-value="گ">گ</button>
+            <button class="key" data-value="ح">ح</button>
+            <button class="key" data-value="ج">ج</button>
+            <button class="key" data-value="ک">ک</button>
+            <button class="key" data-value="ل">ل</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key" data-value="ز">ز</button>
+            <button class="key" data-value="ش">ش</button>
+            <button class="key" data-value="چ">چ</button>
+            <button class="key" data-value="ط">ط</button>
+            <button class="key" data-value="ب">ب</button>
+            <button class="key" data-value="ن">ن</button>
+            <button class="key" data-value="م">م</button>
+            <button class="key" data-value=" ">اسپیس</button>
+        </div>
+        <div class="keyboard-row">
+            <button class="key" data-value="backspace">پیچھے</button>
+            <button class="key" data-value="enter">داخل کریں</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Main Content with Bootstrap -->
+<div class="container mt-5" id="ww-1">
+    <div class="text-container">
+        <h1 class="text-center text-dark">Welcome to PEHCHANO</h1>
+        <p class="text-center text-dark">Identify Urdu text instantly from any Perso-Arabic script input using our
+            intelligent language detection tool</p>
+    </div>
+    <hr>
+    <!-- About This Project Section -->
+    <section class="mt-5">
+        <div class="text-container">
+            <h1 class="text-center text-dark about">About PEHCHANO</h1>
+            <p class="text-center text-dark">PEHCHANO is a web-based tool designed to detect whether text written in the
+                Perso-Arabic script is Urdu or not. Powered by a custom-trained machine learning model, it supports
+                real-time detection with a simple, user-friendly interface</p>
+        </div>
+        <div class="row mt-4">
+            <!-- Key Features Card -->
+            <div class="col-md-4">
+                <div class="card a-1">
+                    <div class="card-header bg-success text-white">
+                        <h5>How It Works</h5>
+                    </div>
+                    <div class="card-body">
+
+                        <p>Users can type or paste text in the input box using any Perso-Arabic script (e.g., Urdu,
+                            Arabic, Persian). The system analyzes the input using a trained machine learning model and
+                            instantly tells whether the text is Urdu or not, along with a confidence score.</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technologies Used Card -->
+            <div class="col-md-4">
+                <div class="card a-2">
+                    <div class="card-header bg-success text-white">
+                        <h5>Features</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Real-time language identification</li>
+                            <li>Confidence score for transparency</li>
+                            <li>On-screen Urdu keyboard for easy typing</li>
+                            <li>Guest access with 10 free identifications</li>
+                            <li>Unlimited use for logged-in users</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Mission Card -->
+            <div class="col-md-4">
+                <div class="card a-3">
+                    <div class="card-header bg-success text-white">
+                        <h5>Why PEHCHANO?</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Unlike generic language detectors, PEHCHANO is purpose-built to focus solely on identifying
+                            Urdu from closely related Perso-Arabic languages. It’s ideal for linguists, researchers, and
+                            developers working with multilingual datasets in Urdu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center text-center">
+        <div class="col-md-8">
+            <div id="contact-container" class="card shadow p-4">
+                <h1 class="mb-4">Feedback Form</h1>
+
+                <!-- Contact Form -->
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="fullName" name="fullName"
+                               placeholder="Enter your full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                               required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" id="comment" name="comment" rows="4"
+                                  placeholder="Enter your message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Send Message</button>
+                </form>
+                <div id="message" class="mt-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+<!-- Modal for displaying result -->
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">  <!-- Added modal-dialog-centered for vertical centering -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultModalLabel">Prediction Result</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="result">
+                <h3 id="result1"></h3>
+                <h3 id="result2"></h3>
+            </div>
+            <!-- Buttons in one row, centered, occupying full width -->
+            <div class="mt-3 d-flex justify-content-center gap-3">
+                <!-- Sample Text Button, full width and centered -->
+                <button id="sampleTextBtn" class="btn btn-success">Sample Text</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- Copy Result Button, full width and centered -->
+                <button id="copyResultBtn" class="btn btn-success">Copy Result</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

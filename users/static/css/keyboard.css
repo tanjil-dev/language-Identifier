@@ -1,0 +1,61 @@
+.keyboard{
+    width: 650px; /* Increased width */
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.keyboard-header{
+    background: #198753;
+    color: #fff;
+    padding: 10px;
+    cursor: move;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#closeKeyboardBtn{
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 20px;
+}
+
+.keyboard-body{
+    padding: 10px;
+}
+
+.keyboard-row{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.key{
+    padding: 10px 20px 10px 20px;
+    font-size: 19px;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.key:hover{
+    background-color: #e0e0e0;
+}
+
+.hidden{
+    display: none;
+}
+
+
+

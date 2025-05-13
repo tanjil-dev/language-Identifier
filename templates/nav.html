@@ -1,0 +1,40 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #343a40;">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a class=" navbar-brand" href="{% url 'home' %}"><img src="{% static 'image/Logo.png' %}" style="width:40px; height:35px"
+        alt="My image"/></a>
+    <button class="navbar-toggler collapsed btn btn-info" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="{% url 'home' %}"><h3 id="name-1">Pehchano</h3><span
+                    class="sr-only">(current)</span></a>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+            {% if request.path == '/' %}
+            <a href="" id="scrollToCard" class="btn btn-outline-success my-2 my-sm-0">About Us</a>
+            {% endif %}
+            &nbsp;&nbsp;
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    {{request.user}}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="{% url 'custom_logout' %}">Logout</a></li>  <!-- Custom logout link -->
+                </ul>
+            </div>
+            {% else %}
+            <a href="{% url 'custom_login' %}" class="btn btn-outline-success my-2 my-sm-0">Login</a>
+            &nbsp;&nbsp;
+            <a href="{% url 'custom_signup' %}" class="btn btn-outline-success my-2 my-sm-0">Sign Up</a>
+            {% endif %}
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+</nav>
